@@ -3,7 +3,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as dat from "lil-gui";
 
-THREE.ColorManagement.enabled = false;
+// THREE.ColorManagement.enabled = false;
 
 //BASE
 //-------------------------------------------------------------------------------
@@ -20,13 +20,31 @@ const scene = new THREE.Scene();
 const backgroundColor = new THREE.Color(0xf4e9ce);
 scene.background = backgroundColor;
 
-//LOADER
+//LOADER HOUSE
+//-------------------------------------------------------------------------------
+// const gltfLoader = new GLTFLoader();
+
+// gltfLoader.load("/models/House/gltf/scene.gltf", (gltf) => {
+//   const loadedObject = gltf.scene.children[0];
+//   scene.add(loadedObject);
+// });
+
+//LOADER HELMET
 //-------------------------------------------------------------------------------
 const gltfLoader = new GLTFLoader();
 
-gltfLoader.load("/models/House/gltf/scene.gltf", (gltf) => {
-  const loadedObject = gltf.scene.children[0];
-  scene.add(loadedObject);
+gltfLoader.load("/models/FlightHelmet/glTF/FlightHelmet.gltf", (gltf) => {
+  console.log(gltf);
+  //   while (gltf.scene.children.length) {
+  //     scene.add(gltf.scene.children[0]);
+  //   }
+
+  //   const children = [...gltf.scene.children];
+  //   for (const child of children) {
+  //     scene.add(child);
+  //   }
+
+  scene.add(gltf.scene);
 });
 
 //FLOOR
