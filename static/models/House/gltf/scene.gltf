@@ -1810,7 +1810,8 @@
             }
         },
         {
-            "alphaMode" : "BLEND",
+            "alphaCutoff" : 0.5,
+            "alphaMode" : "MASK",
             "doubleSided" : true,
             "extensions" : {
                 "KHR_materials_unlit" : {}
