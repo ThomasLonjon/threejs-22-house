@@ -22,29 +22,11 @@ scene.background = backgroundColor;
 
 //LOADER HOUSE
 //-------------------------------------------------------------------------------
-// const gltfLoader = new GLTFLoader();
-
-// gltfLoader.load("/models/House/gltf/scene.gltf", (gltf) => {
-//   const loadedObject = gltf.scene.children[0];
-//   scene.add(loadedObject);
-// });
-
-//LOADER HELMET
-//-------------------------------------------------------------------------------
 const gltfLoader = new GLTFLoader();
 
-gltfLoader.load("/models/FlightHelmet/glTF/FlightHelmet.gltf", (gltf) => {
-  console.log(gltf);
-  //   while (gltf.scene.children.length) {
-  //     scene.add(gltf.scene.children[0]);
-  //   }
-
-  //   const children = [...gltf.scene.children];
-  //   for (const child of children) {
-  //     scene.add(child);
-  //   }
-
-  scene.add(gltf.scene);
+gltfLoader.load("/models/House/gltf/scene.gltf", (gltf) => {
+  const loadedObject = gltf.scene.children[0];
+  scene.add(loadedObject);
 });
 
 //FLOOR
