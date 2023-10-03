@@ -31,20 +31,26 @@ scene.background = backgroundColor;
 
 //LOADER HELMET
 //-------------------------------------------------------------------------------
+// const gltfLoader = new GLTFLoader();
+
+// gltfLoader.load("/models/FlightHelmet/glTF/FlightHelmet.gltf", (gltf) => {
+//   scene.add(gltf.scene);
+// });
+
+//LOADER FOX
+//-------------------------------------------------------------------------------
 const gltfLoader = new GLTFLoader();
 
-gltfLoader.load("/models/FlightHelmet/glTF/FlightHelmet.gltf", (gltf) => {
-  console.log(gltf);
-  //   while (gltf.scene.children.length) {
-  //     scene.add(gltf.scene.children[0]);
-  //   }
+let mixer = null;
 
-  //   const children = [...gltf.scene.children];
-  //   for (const child of children) {
-  //     scene.add(child);
-  //   }
+gltfLoader.load("/models/Fox/glTF/Fox.gltf", (gltf) => {
+  mixer = new THREE.AnimationMixer(gltf.scene);
+  const action = mixer.clipAction(gltf.animations[0]);
+
+  action.play();
 
   scene.add(gltf.scene);
+  gltf.scene.scale.set(0.1, 0.1, 0.1);
 });
 
 //FLOOR
@@ -132,6 +138,11 @@ const tick = () => {
   const elapsedTime = clock.getElapsedTime();
   const deltaTime = elapsedTime - previousTime;
   previousTime = elapsedTime;
+
+  // Update mixer
+  if (mixer !== null) {
+    mixer.update(deltaTime);
+  }
 
   // Update controls
   controls.update();
